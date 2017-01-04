@@ -55,6 +55,7 @@ add_library(${PROJECT_NAME}_loader_plugins
   src/simple_transmission_loader.cpp           include/transmission_interface/simple_transmission_loader.h
   src/differential_transmission_loader.cpp     include/transmission_interface/differential_transmission_loader.h
   src/four_bar_linkage_transmission_loader.cpp include/transmission_interface/four_bar_linkage_transmission_loader.h
+  src/adaptive_synergy_transmission_loader.cpp include/transmission_interface/adaptive_synergy_transmission_loader.h
   src/joint_state_interface_provider.cpp       include/transmission_interface/joint_state_interface_provider.h
   src/position_joint_interface_provider.cpp    include/transmission_interface/position_joint_interface_provider.h
   src/velocity_joint_interface_provider.cpp    include/transmission_interface/velocity_joint_interface_provider.h
@@ -98,6 +99,8 @@ if(CATKIN_ENABLE_TESTING)
   catkin_add_gtest(four_bar_linkage_transmission_test test/four_bar_linkage_transmission_test.cpp)
   target_link_libraries(four_bar_linkage_transmission_test ${Boost_LIBRARIES})
 
+  catkin_add_gtest(adaptive_synergy_transmission_test test/adaptive_synergy_transmission_test.cpp)
+
   catkin_add_gtest(transmission_interface_test        test/transmission_interface_test.cpp)
   target_link_libraries(transmission_interface_test ${TinyXML_LIBRARIES} ${catkin_LIBRARIES})
 
@@ -112,6 +115,9 @@ if(CATKIN_ENABLE_TESTING)
 
   catkin_add_gtest(four_bar_linkage_transmission_loader_test test/four_bar_linkage_transmission_loader_test.cpp)
   target_link_libraries(four_bar_linkage_transmission_loader_test ${PROJECT_NAME}_parser ${catkin_LIBRARIES})
+
+  catkin_add_gtest(adaptive_synergy_transmission_loader_test test/adaptive_synergy_transmission_loader_test.cpp)
+  target_link_libraries(adaptive_synergy_transmission_loader_test ${PROJECT_NAME}_parser)
 
   catkin_add_gtest(transmission_interface_loader_test test/transmission_interface_loader_test.cpp)
   target_link_libraries(transmission_interface_loader_test ${PROJECT_NAME}_parser
